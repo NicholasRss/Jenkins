@@ -1,4 +1,4 @@
-package br.senac.br;
+package br.senac.go;
 
 import android.content.Context;
 

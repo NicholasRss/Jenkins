@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.senac.br">
+    package="br.senac.go">
 
     <application
         android:allowBackup="true"
