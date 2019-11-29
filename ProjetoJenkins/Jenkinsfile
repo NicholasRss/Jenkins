@@ -36,7 +36,6 @@ pipeline{
                 dir("$projetoJK") {
                     sh '$projetoPK/gradlew assembleRelease'
                 }
-
             }
         }
     }
