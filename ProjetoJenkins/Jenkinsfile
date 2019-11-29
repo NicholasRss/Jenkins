@@ -1,6 +1,9 @@
 pipeline{
 
     agent any
+    environment {
+        projetoJK = "$WORKSPACE/ProjetoJenkins"
+    }
 
     stages{
         stage('Preparando ambiente') {
