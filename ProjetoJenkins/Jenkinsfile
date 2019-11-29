@@ -9,21 +9,34 @@ pipeline{
         stage('Preparando ambiente') {
             steps {
                 echo 'Limpando a workspace'
+                dir("$projetoJK") {
+                    sh '$projetoPK/gradle wrapper'
+                }
             }
         }
         stage('Teste') {
             steps {
                 echo 'Testando'
+                dir("$projetoJK") {
+                    sh '$projetoPK/gradlew test'
+                }
             }
         }
         stage('Build lint') {
             steps {
                 echo 'Construindo Debug'
+                dir("$projetoJK") {
+                    sh '$projetoPK/gradlew lintRelease'
+                }
             }
         }
         stage('Build APK') {
             steps {
                 echo 'Construindo APK'
+                dir("$projetoJK") {
+                    sh '$projetoPK/gradlew assembleRelease'
+                }
+
             }
         }
     }
