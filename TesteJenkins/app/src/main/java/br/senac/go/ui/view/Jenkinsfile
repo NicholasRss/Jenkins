@@ -34,7 +34,7 @@ pipeline{
             steps {
                 echo 'Construindo APK'
                 dir("$projetoJK") {
-                    sh '$projetoPK/gradlew assembleReleaseooo'
+                    sh '$projetoPK/gradlew assembleRelease'
                 }
             }
         }
