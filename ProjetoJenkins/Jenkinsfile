@@ -11,20 +11,20 @@ pipeline{
                 echo 'Limpando a workspace'
             }
         }
-    }
-    stage('Teste') {
-        steps {
-            echo 'Testando'
+        stage('Teste') {
+            steps {
+                echo 'Testando'
+            }
         }
-    }
-    stage('Build lint') {
-        steps {
-            echo 'Construindo Debug'
+        stage('Build lint') {
+            steps {
+                echo 'Construindo Debug'
+            }
         }
-    }
-    stage('Build APK') {
-        steps {
-            echo 'Construindo APK'
+        stage('Build APK') {
+            steps {
+                echo 'Construindo APK'
+            }
         }
     }
 }
