@@ -5,11 +5,35 @@ pipeline{
         projetoJK = "$WORKSPACE/ProjetoJenkins"
     }
     stages{
-        stage('Preparando ambiente'){
-            steps{
+        stage('Preparando ambiente') {
+            steps {
                 echo 'Limpando a workspace'
-                dir("$projetoJK"){
+                dir("$projetoJK") {
                     sh 'gradle wrapper'
+                }
+            }
+        }
+        stage('Teste') {
+            steps {
+                echo 'Testando'
+                dir("$projetoJK") {
+                    sh '$projetoJK/gradlew test'
+                }
+            }
+        }
+        stage('Build lint') {
+            steps {
+                echo 'Verificando debug'
+                dir("$projetoJK") {
+                    sh '$projetoJK/gradlew lintDebug'
+                }
+            }
+        }
+        stage('Build APK') {
+            steps {
+                echo 'Construindo e gerando apk'
+                dir("$projetoJK") {
+                    sh '$projetoJK/gradlew assembleDebug'
                 }
             }
         }
