@@ -1,0 +1,17 @@
+pipeline{
+
+    agent any
+    environment{
+        projetoJK = "$WORKSPACE/ProjetoJenkins"
+    }
+    stages{
+        stage('Preparando ambiente'){
+            steps{
+                echo 'Limpando a workspace'
+                dir("$projetoJK"){
+                    sh 'gradle wrapper'
+                }
+            }
+        }
+    }
+}
