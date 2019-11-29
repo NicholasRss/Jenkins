@@ -1,6 +1,9 @@
 pipeline{
 
     agent any
+    environment{
+
+    }
 
     stages{
         stage('Preparando ambiente') {
@@ -8,6 +11,20 @@ pipeline{
                 echo 'Limpando a workspace'
             }
         }
-
+    }
+    stage('Teste') {
+        steps {
+            echo 'Testando'
+        }
+    }
+    stage('Build lint') {
+        steps {
+            echo 'Construindo Debug'
+        }
+    }
+    stage('Build APK') {
+        steps {
+            echo 'Construindo APK'
+        }
     }
 }
