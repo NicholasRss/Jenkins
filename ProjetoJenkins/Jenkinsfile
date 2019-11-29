@@ -1,49 +1,13 @@
 pipeline{
 
     agent any
-    environment{
-        projetoJK = "$WORKSPACE/ProjetoJenkins"
-    }
+
     stages{
         stage('Preparando ambiente') {
             steps {
                 echo 'Limpando a workspace'
-                dir("$projetoJK") {
-                    sh 'gradle wrapper'
-                }
             }
         }
-        stage('Teste') {
-            steps {
-                echo 'Testando'
-                dir("$projetoJK") {
-                    sh '$projetoJK/gradlew test'
-                }
-            }
-        }
-        stage('Build lint') {
-            steps {
-                echo 'Verificando debug'
-                dir("$projetoJK") {
-                    sh '$projetoJK/gradlew lintDebug'
-                }
-            }
-        }
-        stage('Build APK') {
-            steps {
-                echo 'Construindo e gerando apk'
-                dir("$projetoJK") {
-                    sh '$projetoJK/gradlew assembleDebug'
-                }
-            }
-        }
-        stage('Arquivando apk'){
-            steps{
-                echo 'arquivando apk gerado'
-                arquiveArtifacts artifacts: '**/app-release.apk', fingerprint: true, allowEmptyArquive: true
-                arquiveArtifacts artifacts: '**/app-release-unsigned.apk', fingerprint: true, allowEmptyArquive: false
-                echo 'Gerado'
-            }
-        }
+
     }
 }
